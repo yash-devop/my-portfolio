@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+:root{
+  --bg-black : #090808;
+  --heading-gray : #A5A5A5;
+  --subheading-gray : #9C9C9C;
+  --heading-white : #FDFDF2;
+  --font-default: 'Space Mono', monospace;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+    /* background-color: var(--bg-black); */
+    font-family: var(--font-default);
+    font-weight: 800;
+}
+.grid-image-container{
+  display: grid;
+  grid-template-columns: 550px 1fr;
+  height: 100%;
+}
+.grid-image-subcontainer{
+  display: grid;
+  height: 657px;
+  /* background-color: red; */
+  /* grid-template-columns: 400px 1fr; */
+}
+.grid-image-subcontainer-2{
+  display: grid;
+  height: 650px;
+  /* background-color: rgb(31, 255, 162); */
+  width: 100%;
+  grid-template-rows: 320px 1fr;
+}
+
+.active{
+  padding: 6px;
+  padding-left: 9px;
+  padding-right: 9px;
+  border-radius: .5rem;
+  background-color: rgba(77, 76, 76, 0.3);
+  transition: .2s all ease-out ;
+}
+/* .active_white{
+  p-1.5 rounded-lg bg-[#44444452] text-white
+  color: ;
+} */
