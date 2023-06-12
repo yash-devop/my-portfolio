@@ -49,7 +49,6 @@ body{
   background-color: rgba(77, 76, 76, 0.3);
   transition: .2s all ease-out ;
 }
-/* .active_white{
-  p-1.5 rounded-lg bg-[#44444452] text-white
-  color: ;
-} */
+.active_white{
+  background-color: rgba(77, 76, 76, 0.3);
+}

@@ -3,7 +3,7 @@ import { BsToggleOn } from 'react-icons/bs';
 import { BsToggleOff } from 'react-icons/bs';
 import { BiMoon, BiSun } from 'react-icons/bi';
 import { ThemeContext } from '../context/context';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 
 const Navbar = () => {
@@ -31,7 +31,19 @@ const Navbar = () => {
   function handleResumeClick() {
     setActiveTab("resume");
   }
+  
+  useEffect(()=>{
+      const KeyThemeToggler=(event)=>{
+        if(event.key === "L" || event.key === "l"){
+          handleThemeToggle();
+          console.log("pressed")
+        }
+      }
+      
+      document.addEventListener('keypress',KeyThemeToggler)
 
+      return ()=>document.removeEventListener('keypress',KeyThemeToggler);
+  })
   return (
     <>
       <div className={`flex justify-between items-center pt-6 ${darkMode ? "text-[color:var(--heading-white)]" : "text-[color:var(--bg-black)]" }`}>
@@ -40,7 +52,7 @@ const Navbar = () => {
         </div>
         <div className=''>
           <ul className={`flex gap-8 `}>
-            <li className={`cursor-pointer ${activeTab  === "home" && darkMode ? "active text-red-400" : "text-yellow-400"} p-1.5`} onClick={handleHomeClick}><Link to={'/'}>Home</Link></li>
+            <li className={`cursor-pointer ${activeTab  === "home"  ? "active" : ""} p-1.5`} onClick={handleHomeClick}><Link to={'/'}>Home</Link></li>
             <li className={`cursor-pointer ${activeTab === "skill" ? "active" : ""} p-1.5`} onClick={handleSkillClick}><Link to={'/skill'}>Skills</Link></li>
             <li className={`cursor-pointer ${activeTab === "work" ? "active" : ""} p-1.5` } onClick={handleWorkClick}><Link to={'/work'}>Work</Link></li>
             <li className={`cursor-pointer ${activeTab === "experience" ? "active" : ""} p-1.5`} onClick={handleExpClick}><Link to={'/experience'}>Experience</Link></li>
@@ -52,18 +64,18 @@ const Navbar = () => {
             darkMode ? (
               <>
               <p>Dark</p>
-              <div className='p-1.5 rounded-lg bg-[#44444452] text-white'>
-
+              <div className='flex items-center p-1.5 rounded-lg bg-[#44444452] text-white'>
                 <BiSun className='cursor-pointer transition-all ease-out duration-100' onClick={handleThemeToggle} />
+                <span className='pl-1 text-sm'>/L</span>
               </div>
-
               </>
             ):(
               <>
               <div className='flex items-center gap-1'>
                 <p className='text-[#090909]'>Light</p>
-                <div className='p-1.5 rounded-lg bg-[#44444452]/10 text-black'>
+                <div className='flex items-center p-1.5 rounded-lg bg-[#44444452]/10 text-black'>
                   <BiMoon className='cursor-pointer text-[#9C9C9C] transition-all ease-out duration-100' onClick={handleThemeToggle} />
+                  <span className='pl-1 text-sm text-[#9C9C9C]'>/L</span>
                 </div>
               </div>
               </>

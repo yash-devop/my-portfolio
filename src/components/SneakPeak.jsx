@@ -23,6 +23,9 @@ const SneakPeak=()=>{
         setHover(false);
         setText(null)
     }
+    const goToWork=()=>{
+        navigate("/work")
+    }
     return(
         <>
             <div className={`py-4 relative`}>
@@ -50,7 +53,7 @@ const SneakPeak=()=>{
                     </div>
                 <div onMouseEnter={onhandleHover} onMouseLeave={handleHoverOff} className={`absolute flex flex-col items-center justify-center ${hover ? "opacity-100" : null}  w-full h-[650px] text-center  transition-all duration-100 ease-out hover:transition-all hover:duration-300 hover:ease-out`}>
                     <h1 className={`text-[#FDFDF2] text-center text-3xl shadow-whitexl`}>{text}</h1>
-                    {hover ? <button onClick={()=>navigate("/work")} className="flex gap-2 items-center p-4 bg-black border border-white mt-4 text-white cursor-pointer">
+                    {hover ? <button onClick={goToWork} className="flex gap-2 items-center p-4 bg-black border border-white mt-4 text-white cursor-pointer">
                     <p>Projects</p>
                     <HiArrowNarrowRight/>
                     </button>: null}
